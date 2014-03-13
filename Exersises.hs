@@ -26,3 +26,10 @@ rwhsIsPalindrome l = l == rwhsReverse l
 -- length of each sublist
 rwhsListLengthComparator a b = compare (length a) (length b) 
 rwhsSortLists ll = sortBy rwhsListLengthComparator ll
+
+--ex 7. Function that joins a list of lists together using a separator
+--value
+rwhsIntersperse s (l:ls) = l ++ intersperse' s ls
+  where intersperse' s (l:ls) =  s : l ++ intersperse' s ls
+        intersperse' s [] = []
+rwhsIntersperse s [] = []
