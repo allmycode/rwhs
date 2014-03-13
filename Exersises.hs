@@ -27,9 +27,24 @@ rwhsIsPalindrome l = l == rwhsReverse l
 rwhsListLengthComparator a b = compare (length a) (length b) 
 rwhsSortLists ll = sortBy rwhsListLengthComparator ll
 
---ex 7. Function that joins a list of lists together using a separator
---value
+-- ex 7. Function that joins a list of lists together using a separator
+-- value
 rwhsIntersperse s (l:ls) = l ++ intersperse' s ls
   where intersperse' s (l:ls) =  s : l ++ intersperse' s ls
         intersperse' s [] = []
 rwhsIntersperse s [] = []
+
+-- ex 8. Write a function that will determine the height of the tree
+data BinaryTree a = Node a (BinaryTree a) (BinaryTree a)
+            | Empty
+            deriving (Show)
+
+rwhsTreeHeight (Node _ l r) = 1 + (max (rwhsTreeHeight l) (rwhsTreeHeight r))
+rwhsTreeHeight Empty = 0
+
+-- test data
+b0 = Empty
+b1 = Node 1 Empty Empty
+b2 = Node 1 b1 Empty
+b32 = Node 1 b2 b1
+
