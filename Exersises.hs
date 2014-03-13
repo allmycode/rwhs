@@ -1,5 +1,6 @@
--- ex. 1 Length function
+import Data.List (sortBy)
 
+-- ex. 1 Length function
 rwhsLength :: [a] -> Int
 rwhsLength (_:xs) = 1 + rwhsLength xs
 rwhsLength []   = 0
@@ -20,3 +21,8 @@ rwhsReverse (x:xs) = rev' (x:[]) xs
 rwhsMakePalindrome l = l ++ rwhsReverse l
                    
 rwhsIsPalindrome l = l == rwhsReverse l
+
+-- ex 6. Create a function that sorts a list of lists based on the
+-- length of each sublist
+rwhsListLengthComparator a b = compare (length a) (length b) 
+rwhsSortLists ll = sortBy rwhsListLengthComparator ll
